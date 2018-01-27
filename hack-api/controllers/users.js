@@ -17,11 +17,14 @@ exports.createUser = (req, res, next) => {
             userData.email = req.body.email;
     }
 
-    // check if password was provided
     if (req.body.password)
         userData.hash = req.body.password;
     if (req.body.hash)
         userData.hash = req.body.hash;
+    if (req.body.name)
+        userData.name = req.body.name;
+    if (req.body.personality) 
+        userData.personality = req.body.personality;
 
     // create new user
     const newUser = new User(userData);

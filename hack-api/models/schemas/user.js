@@ -4,9 +4,11 @@ const bcrypt = require('bcrypt-nodejs');
 const validator = require('email-validator');
 
 var userSchema = new Schema({
+    name: String,
     email: {type: String, unique: true, sparse: true, trim: true},
     hash: String,
-    token: String
+    token: String,
+    personality: String
   },
   {
     toObject: { getters: true },
@@ -22,9 +24,10 @@ userSchema.pre('save', function(callback) {
         return callback(new Error('Missing email'));
     if (!this.hash)
         return callback(new Error('Missing password'));
+    if (!this.personality)
+        return callback(new Error('Missing 4-letter Myers-Briggs personality type'))
     if (this.isModified('hash'))
         this.hash = bcrypt.hashSync(this.hash);
-
     if (this.email && !validator.validate(this.email))
         return callback(new Error('Invalid email'));
 

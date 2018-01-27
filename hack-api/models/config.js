@@ -1,5 +1,5 @@
 module.exports = {
-    port: 5000,
+    port: 3000,
     dbUrl: 'localhost',
 
     // secret for creating tokens
