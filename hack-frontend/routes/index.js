@@ -16,8 +16,23 @@ router.get('/register', (req, res, next) => {
     return res.render('register');
 });
 
+router.post('/register', (req, res, next) => {
+  request.post({
+      url: config.apiUrl + '/users',
+      form: req.body
+  }).pipe(res)
+})
+
+
 router.get('/login', (req, res, next) => {
     return res.render('login');
+});
+
+router.post('/login', (req, res, next) => {
+  request.post({
+    url: config.apiUrl + '/auth/login',
+    form: req.body
+  }).pipe(res)
 });
 
 router.get('/test', (req, res, next) => {
@@ -27,14 +42,5 @@ router.get('/test', (req, res, next) => {
 router.get('/soundtrack', (req, res, next) => {
     return res.render('soundtrack');
 });
-
-
-
-router.post('/register', (req, res, next) => {
-  request.post({
-      url: config.apiUrl + '/users',
-      form: req.body
-  }).pipe(res)
-})
 
 module.exports = router;

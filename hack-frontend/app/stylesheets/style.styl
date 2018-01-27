@@ -1,5 +1,13 @@
 @require "helpers"
 
+text-color = #000
+mobile-width = 600px
+
+body
+    margin 0
+    padding 0
+    font-family sans-serif
+    
 .error-message
     visibility hidden
     color red
@@ -26,7 +34,44 @@
     border-radius 5px
     text-align center
 
-
+// FORM
+.form-box
+    width 40%
+    margin 0px 30%
+    box-shadow 0px 0px 20px #CCC
+    padding 30px
+.fb-item
+    width 100%
+    margin-bottom 20px
+    font-size 1.2em
+    display flex
+    justify-content space-between
+.fb-item input
+    display flex
+    justify-content space-between
+    font-size 1.2em
+    width 50%
+.fb-item:focus //huh
+    border-color blue
+    
+#submit
+    bottom 0
+    left 0
+    width 100%
+    background rgba(25, 219, 151, 1)
+    padding 20px
+    text-align center
+    color white
+    font-size 1.4em
+    //text-transform uppercase
+    -webkit-transition-duration 0.2s // Safari
+    transition-duration 0.2s
+    
+#submit:hover
+    opacity 0.6
+    //font-size 1.2em
+    //text-transform uppercase
+    cursor pointer
 
 
 

@@ -4,14 +4,19 @@ const form = document.forms[0]
 =            Form Submit Functions            =
 =============================================*/
 
-function submitUser() {
+function register() {
   var data = {}
+  console.log(data)
   if (form.email.value) data.email = form.email.value
   if (form.password.value) data.password = form.password.value
+  if (form.name.value) data.name = form.name.value
+  if (form.personality.value) data.personality = form.personality.value
 
   if (!data.email) return displayError('Must provide email')
   if (!data.password) return displayError('Must provide password')
   if (data.password !== form.confirm.value) return displayError('Passwords do not match')
+  if (!data.name) return displayError('Must provide name')
+  if (!data.personality) return displayError('Must provide 4-letter Myers-Briggs personality type')
 
   fetch('/register', {
     headers: {
@@ -23,6 +28,39 @@ function submitUser() {
   .catch(submitError)
 
 }
+
+function login() {
+  var data = {
+    email: form.email.value,
+    password: form.password.value
+  }
+  console.log(data)
+
+  fetch('/login', {
+    headers: {
+      'Content-Type': 'application/json',
+      'x-access-token': localStorage.token
+    },
+    method: 'POST',
+    body: JSON.stringify(data)
+  }).then(function(res) {
+    console.log(res)
+    if (!res.ok) {
+      res.text().then(function(message) {
+        alert(message)
+      })
+    }
+    res.json()
+    .then(function(data) {
+      localStorage._id = data.userId
+      localStorage.token = data.token
+      console.log(localStorage._id)
+      window.location = '/index'
+    })
+  }).catch(function(err) {
+    console.error(err)
+  })
+} 
 
 /*=============================================
 =            Form Submit Callbacks            =
