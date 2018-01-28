@@ -2,15 +2,24 @@ extends template
 
 block content
     #js-error-message.error-message
+    #navbar
+        a(href='/')
+            img(src = "https://hansenlighting.com/Images/site-templates/icons/white_icons/home_icon.png")
     form          
         .form-box
-            h2.center Login
+            //-h2.center Login
             .fb-item
-                span Email
+                //-span Email
                 br
                 input(type='email' name='email' placeholder='Email' autofocus)
             .fb-item
-                span Password
+                //-span Password
                 br
-                input(type='password' name='password' placeholder='******')
+                input(type='password' name='password' placeholder='Password')
+            .fb-item
+                //-span Password
+                br
+                input(type='personality' name='personality' placeholder='Personality')
             button#submit(type='button' onclick='login()') Login
+
+

@@ -2,29 +2,32 @@ extends template
 
 block content
     #js-error-message.error-message
+    #navbar
+        a(href='/')
+            img(src = "https://hansenlighting.com/Images/site-templates/icons/white_icons/home_icon.png")
     form          
         .form-box(style='text-align:center')
-            h2(text-color='white') Register
+            //-h2(text-color='white') Register
             .fb-item
-                span(text-color='white') Name
+                //-span(text-color='white') Name
                 br
                 input(type='text' name='name' placeholder='Name')
             .fb-item
-                span(text-color='white') Myers-Briggs Type
+                //-span(text-color='white') Myers-Briggs Type
                 br
-                input(type='text' name='personality' placeholder='ISFJ')
+                input(type='text' name='personality' placeholder='Personality')
             .fb-item
-                span(text-color='white') Email
+                //-span(text-color='white') Email
                 br
-                input(type='email' name='email' placeholder='example@gmail.com')
+                input(type='email' name='email' placeholder='Email')
             .fb-item
-                span(text-color='white') Password
+                //-span(text-color='white') Password
                 br
-                input(type='password' name='password' placeholder='******')
+                input(type='password' name='password' placeholder='Password')
             .fb-item
-                span(text-color='white') Confirm Password
+                //-span(text-color='white') Confirm Password
                 br
-                input(type='password' name='confirm' placeholder='******') 
+                input(type='password' name='confirm' placeholder='Confirm Password') 
             button#submit(type='button' onclick='register()' href='/login') Register
 
     //-.modal#js-success
