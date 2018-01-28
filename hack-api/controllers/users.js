@@ -74,7 +74,9 @@ exports.updateUser = (req, res, next) => {
 };
 
 exports.deleteUser = (req, res, next) => {
-    User.findByIdAndRemove(req.body.id)
-    .then(user => res.sendStatus(200))
-    .catch(next);
+    User.findByIdAndRemove(req.params.userId, (err, user) => {
+        if (err) return next(err)
+        if (!user) return res.status(404).send('Could not find user ' + req.params.userId)
+        return res.json(user)
+  })
 }

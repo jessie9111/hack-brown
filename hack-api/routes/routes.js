@@ -13,8 +13,11 @@ const users = require('../controllers/users')
 router.route('/users')
   .post(users.createUser)
   .get(users.getAllUsers)
-  .put(/*auth.validateUser, */users.updateUser)
-  .delete(/*auth.validateUser, */users.deleteUser)
+
+router.route('/users/:userId/id')
+  .get(users.getUserById)
+  .put(users.updateUser)
+  .delete(users.deleteUser)
 
 /*
 * Auth Routes
