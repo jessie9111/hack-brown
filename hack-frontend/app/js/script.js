@@ -21,12 +21,27 @@ function register() {
   fetch('/register', {
     headers: {
       'Content-Type': 'application/json',
+      'x-access-token': localStorage.token
     },
     method: 'POST',
     body: JSON.stringify(data)
-  }).then(submitSuccess)
-  .catch(submitError)
-
+  }).then(function(res) {
+    console.log(res)
+    if (!res.ok) {
+      res.text().then(function(message) {
+        alert(message)
+      })
+    }
+    res.json()
+    .then(function(user) {
+      localStorage._id = data.userId
+      localStorage.token = data.token
+      console.log(localStorage._id)
+      window.location = '/login'
+    })
+  }).catch(function(err) {
+    console.error(err)
+  })
 }
 
 function login() {
@@ -34,7 +49,6 @@ function login() {
     email: form.email.value,
     password: form.password.value
   }
-  console.log(data)
 
   fetch('/login', {
     headers: {
@@ -55,12 +69,17 @@ function login() {
       localStorage._id = data.userId
       localStorage.token = data.token
       console.log(localStorage._id)
-      window.location = '/index'
+      window.location = '/soundtrack'
     })
   }).catch(function(err) {
     console.error(err)
   })
 } 
+
+function logout() {
+  localStorage.clear()
+  window.location = '/'
+}
 
 /*=============================================
 =            Form Submit Callbacks            =

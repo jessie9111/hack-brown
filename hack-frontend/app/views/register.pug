@@ -4,28 +4,28 @@ block content
     #js-error-message.error-message
     form          
         .form-box(style='text-align:center')
-            h2 Register
+            h2(text-color='white') Register
             .fb-item
-                span Name
+                span(text-color='white') Name
                 br
                 input(type='text' name='name' placeholder='Name')
             .fb-item
-                span Myers-Briggs Type
+                span(text-color='white') Myers-Briggs Type
                 br
                 input(type='text' name='personality' placeholder='ISFJ')
             .fb-item
-                span Email
+                span(text-color='white') Email
                 br
                 input(type='email' name='email' placeholder='example@gmail.com')
             .fb-item
-                span Password
+                span(text-color='white') Password
                 br
                 input(type='password' name='password' placeholder='******')
             .fb-item
-                span Confirm Password
+                span(text-color='white') Confirm Password
                 br
                 input(type='password' name='confirm' placeholder='******') 
-            button#submit(type='button' onclick='register()') Register
+            button#submit(type='button' onclick='register()' href='/login') Register
 
     //-.modal#js-success
         .modal-content
