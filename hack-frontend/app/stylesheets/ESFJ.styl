@@ -1,0 +1,21 @@
+img.type 
+	margin-left 130px
+	border-radius: 15px
+.spotify-embeds 
+	margin auto
+	width 20%
+	padding 50px
+.spotify-embed 
+	background #282828
+	&:not(:last-of-type) 
+		margin-bottom 5px
+	iframe 
+		display block
+		-webkit-transition opacity 0.125s
+		transition opacity 0.125s
+.js 
+	.spotify-embed 
+		iframe 
+			opacity 0
+			&.loaded 
+				opacity 1
